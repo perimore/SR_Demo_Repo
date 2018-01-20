@@ -39,10 +39,10 @@ C = "show isis database detail"
 ###  System has a 1 second wait at end - so switch doesn't blow.
 
 COMMANDS = [C]
-CONTROLLER_IP = '192.168.1.2'
+CONTROLLER_IP = '10.10.10.10'
 DEADTIMECOUNTER = 1
 DEADTIMETIMER = 0.5
-BGP_LU_Peer = 'xxx.xxx.xxx.xxx'
+BGP_LU_Peer = '1.1.1.1'
 
 #####################################################################
 
@@ -363,7 +363,7 @@ class Get_SIDs_DICTS(Process):
 class Backend_Flask(object):
 	def __init__(self):
 		script_dir = os.path.dirname(__file__)
-		self.app = Flask('Backend_Flask', template_folder=script_dir, root_path=script_dir, static_url_path=script_dir, static_folder=script_dir)
+                self.app = Flask('Backend_Flask', template_folder=script_dir, static_url_path='', static_folder=script_dir)
 		self.app.add_url_rule('/', "index", self.index, methods=['GET','POST'])
 		self.app.add_url_rule('/path_frame.htm', "path_frame", self.path_frame, methods=['GET','POST'])
 		self.app.run(host='0.0.0.0', port=5001, debug=True, use_reloader=False)
